@@ -1,11 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import propTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function Movies({id, year, title, summary, poster, genres}){
     return(
         <div className="movie">
-            <img src={poster} alt={title}/>
+            <Link to={{
+                pathname: `/detail/${id}`,
+                state: {
+                    id,
+                    year,
+                    title,
+                    summary,
+                    poster,
+                    genres,
+                }
+            }}>
+                <img src={poster} alt={title}/>
+            </Link>
             <ul>
                 {genres.map((genre,idx) => {
                     return (
