@@ -8,21 +8,21 @@ class Detail extends React.Component{
         }
     }
     render(){
-        const {location:{state:{year,title,summary,poster,genres}}} = this.props;
+        const {location:{state}} = this.props;
         if(this.props.location.state){
             return(
                 <div className="movie">
-                <img src={poster} alt={title}/>
+                <img src={state.poster} alt={state.title}/>
                 <ul>
-                    {genres.map((genre,idx) => {
+                    {state.genres.map((genre,idx) => {
                         return (
                         <li key={idx}>{genre}</li>
                         )
                     })
                     }
                 </ul>
-                <h4>{title} ({year})</h4>
-                <p>{summary}</p>
+                <h4>{state.title} ({state.year})</h4>
+                <p>{state.summary}</p>
             </div>
             )
         }else{
