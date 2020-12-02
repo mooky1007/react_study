@@ -1,36 +1,15 @@
 import React from 'react';
+import { HashRouter, Route } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import Home from './routes/Home';
+import About from './routes/About';
 
-class App extends React.Component{
-  state = {
-    name: 'mooky'
-  }
-  render(){
-    const { name } = this.state
-    console.log('render')
-    return (
-      <div>
-      hello {name}!!
-      <button onClick={this.testCustomFunction}>change</button>
-      </div>
-    )
-  }
-  testCustomFunction = () => {
-    this.setState(current => (current.name === "mooky" ? {name: "joon"} : {name: "mooky"}));
-  }
-  componentDidMount(){
-    console.log('did mount')
-  }
-  componentDidUpdate(){
-    console.log('updated')
-  }
+function App(){
+  return <HashRouter>
+    <Navigation />
+    <Route path="/" exact={true} component={Home}/>
+    <Route path="/about" component={About}/>
+  </HashRouter>
 }
-
-// function App(){
-//   return(
-//     <div>
-//       hello3
-//     </div>
-//   )
-// }
 
 export default App;
